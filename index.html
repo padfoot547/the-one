@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The One With The Greeting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #6a5acd; 
+      background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Quicksand', sans-serif;
+      color: #333;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .friends-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 4px;
+    }
+    .dot.red { background-color: #ff4238; }
+    .dot.blue { background-color: #00a0d6; }
+    .dot.yellow { background-color: #ffc000; }
+
+    .frame-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .frame-container:hover {
+      transform: scale(1.05);
+    }
+
+    .yellow-frame {
+      width: 140px;
+      height: 180px;
+      border: 16px solid #ffbc00;
+      border-radius: 12px;
+      box-shadow: 
+        5px 5px 15px rgba(0,0,0,0.4),
+        inset 5px 5px 15px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .peephole {
+      width: 35px;
+      height: 35px;
+      background: #222;
+      border: 4px solid #555;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    }
+
+    .hint-text {
+      margin-top: 15px;
+      color: #ffd1dc;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 14px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .cards-wrapper {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+    }
+
+    .card {
+      background: #fff;
+      border-bottom: 4px solid #ffbc00;
+      border-radius: 8px;
+      width: 160px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-bottom-color: #ff4238;
+    }
+
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Modal Styling Universal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #fdfaf2;
+      width: 100%;
+      max-width: 500px;
+      padding: 40px;
+      border-radius: 10px;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background-image: radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 40%);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #ff4238;
+    }
+
+    .letter-body {
+      font-size: 18px;
+      line-height: 1.6;
+      max-height: 65vh; /* Membatasi tinggi teks maksimal 65% dari tinggi layar */
+      overflow-y: auto; /* Memunculkan scroll otomatis jika teks lebih panjang dari batas */
+      padding-right: 15px; /* Memberi jarak agar teks tidak menabrak scrollbar di kanan */
+    }
+
+    /* Mengubah desain scrollbar khusus untuk isi surat */
+    .letter-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .letter-body::-webkit-scrollbar-track {
+      background: transparent; 
+    }
+    .letter-body::-webkit-scrollbar-thumb {
+      background: #d1c4e9; /* Warna ungu pastel yang senada dengan tema */
+      border-radius: 10px;
+    }
+    .letter-body::-webkit-scrollbar-thumb:hover {
+      background: #6a5acd; /* Warna ungu gelap saat scrollbar disorot */
+    }
+
+    .letter-body h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      color: #6a5acd;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .letter-body p {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="friends-title">
+    T<span class="dot red"></span>H<span class="dot blue"></span>E
+    O<span class="dot yellow"></span>N<span class="dot red"></span>E
+    W<span class="dot blue"></span>I<span class="dot yellow"></span>T<span class="dot red"></span>H
+    <br><br>
+    Y<span class="dot blue"></span>O<span class="dot yellow"></span>U
+  </h1>
+
+  <!-- Elemen Frame Tengah -->
+  <div class="frame-container" onclick="openModal('modalMainLetter')">
+    <div class="yellow-frame">
+      <div class="peephole"></div>
+    </div>
+    <div class="hint-text">Click the frame to peek</div>
+  </div>
+
+  <!-- 5 Kartu Bawah (ditambahkan onclick) -->
+  <div class="cards-wrapper">
+    <div class="card" onclick="openModal('modalPerk')">
+      <div class="card-title">CENTRAL PERK</div>
+      <div class="card-text">Our virtual hangout spot. I'll be there for you!</div>
+    </div>
+    <div class="card" onclick="openModal('modalHowYouDoin')">
+      <div class="card-title">HOW YOU DOIN'?</div>
+      <div class="card-text">Hope you have a great and relaxed day, just like Joey.</div>
+    </div>
+    <div class="card" onclick="openModal('modalPivot')">
+      <div class="card-title">PIVOT!</div>
+      <div class="card-text">If there's ever a problem, we'll just yell "Pivot!" together.</div>
+    </div>
+    <div class="card" onclick="openModal('modalLobster')">
+      <div class="card-title">THE LOBSTER</div>
+      <div class="card-text">"It's a known fact that lobsters fall in love and mate for life."</div>
+    </div>
+    <div class="card" onclick="openModal('modalCall')">
+      <div class="card-title">THE 9 PM CALL</div>
+      <div class="card-text">Reminder: I'll be calling you at 9 PM tonight to catch up!</div>
+    </div>
+  </div>
+
+  <!-- KUMPULAN MODAL (POP-UP) -->
+
+  <!-- 1. Modal Surat Utama -->
+  <div class="modal-overlay" id="modalMainLetter">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalMainLetter')">&times;</button>
+      <div class="letter-body">
+        <h2>Hey, Ebi!</h2>
+        <p>Mind if I drop by your virtual apartment for a bit?</p>
+        <p>I just wanted to make sure you're having an awesome day. Don't forget to take a break, grab a coffee Central Perk style, and forget about the stressful stuff for a while.</p>
+        <p style="font-family: 'Caveat', cursive; font-size: 26px; text-align: right; margin-top: 30px;">
+          I'll be there for you,<br>Satrio
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Central Perk -->
+  <div class="modal-overlay" id="modalPerk">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalPerk')">&times;</button>
+      <div class="letter-body">
+        <h2 style="color: #00a0d6;">☕ To the one who made me fall,</h2>
+        <p>(UHUY)</p>
+        <p>finallehhh kesampean juga saya membuat ala2 blog tandingan Ebi yang maha dahsyat gak tebang aling-aling</p>
+        <p>jujurrr gue akuinnn, tulisan lo setara Kahlil Gibran zhambouuu</p>
+        <p>gue suka banget sama cara lo nulis (especially the person behind these words 😭😭😭)</p>
+        <p>HOW'S YOUR WIKEN GOING, EBI?</p>
+        <P>kalo dari story yang saya intip sih (kikiki) sepertinya hepi sekaleee tudei 🤍🤍🤍</P>
+        <p>hm, where do I start? (tiru2 WQOWOQWK)</p>
+        <p>rekapan kecyil hari Sabtu dulu deh ya wwqokwq hari Sabtu gue gak ngapa2in gilakkk miris bat 🥲</p>
+        <p>tadinya mau padel tuh jam 8 pagi, diajakin sama om Arif (blio orang baek yang sering ngajakin gue buat bantu jadi score keeper kalo lagi ada turnamen)</p>
+        <p>tapi kebablasan, bangun2 liat henfon udah jam 9 lewat dikit WQKWQOWKO akhirnya gak jadi olga deh 🥲</p>
+        <p>tiba2 waktu udah menunjukkan waktu makan siang, karena gue kurang srek sama lauk yang ready kala itu (kayaknya kemaren tuh ikan asin, sama tumis toge kalo gak salah dah)</p>
+        <p>jadi gue moban ke emak buat dadarin telor aje, dan agak fun fact, emak gue selalu nyetok bumbu kacang enak dibawa dari Purwokerto gitu, jadi ibarat kata ini adalah menu koentji kalo gue lagi gak srek sama lauknya, telor dadar dibalur sama bumbu kacang kane dari PWT wk</p>
+        <p>eh tapi kemaren lagi pake sambel terasi deng WQKWQOKWOQ soalnya emak gue lagi bikin sambel terasi, bolehlah diadu sama sambel the greatest Mom Yati 🤍</p>
+        <p>hari pun berjalan lambat, sampai tiba lah ide (muncul jam 20:00 an) "duh gak bisa nihhh, saya uring2annn tidak ada interaksi sama ebi tolonggg"</p>
+        <p>"gue mau nelfonnn, yaudah lah buat aje page balesan seadanya dulu" eh ternyata saya terlalu kepedean, ternyata si dia gak sekepo saya WQOKWOQKWOQKW</p>
+        <p>bolak-balik saya refresh page refresh page https://azizahfebriyanti.github.io/greetings/#letter ternyata gak ada update an. singkat cerita, "coba telfon kali ye, barangkali masih bisa ye kan"</p>
+        <p>sekali telfon, gak diangkat. "mengikuti filosofi 3 kali penolakan si dia, coba sampe 3 kali yee mungkin berlaku juga di telfon ini" WQKWOQKW</p>
+        <p>EH ALHAMDULILLAH DIANGKAT UYEEE~~~ seketika hariku yang pontennya dari 5/100 langsung melejit ke 13173021730103121030120/100 🚀🚀🚀😋</p>
+        <p>long story short, i fell for you. eh maap auto corect. oke lanjut, gue kebangun jam 8, dan dibanguninnya sama kinfar wqkwoq sebelumnya gue ada janjian sama novi di Captain galaxy jam 10, soalnya rambut faraz udah lumayan gondrong</p>
+        <p>eh ternyata Akungnya udah kangen kali, jadilah die yang jemput kinfar pagi2</p>
+        <p>tibalah sore hari, akhirnya faraz diajak buat cukur rambut. akhirnya faraz cukur di 'pangkas rambut Bandung' namanya, yang tau itu tempat akungnya, jadi gue pergi bertiga tadi</p>
+        <p>alhamdulillah jadi motong cost banget, yang tadinya mau di Captain harga 70 ribu, eh di pangkas rambut Sunda cuman 20 ribu aje WQOKWOQWKOQ</p>
+        <div style="text-align: center; margin: 20px 0;">
+  <img src="Screenshot_14.png" alt="Screenshot" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
+        <p>ayo donggg gak usah kuat aja 😌😌😌 kan AN EVERYDAY CONVERSATION</p>
+        <div style="text-align: center; margin: 20px 0;">
+  <img src="Screenshot_15.png" alt="Screenshot" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
+<p>bukan karena itu kokkk</p>
+        <p>I miss you too, Ebi. more than I probably let you know.</p>
+        <p>Have a good night tooo. janlup jangan tinggalin qabliyah subuh 🤍</p>
+        <p>Manusia paling menyebalkan,</p>
+        <p>Satrio</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal How You Doin -->
+  <div class="modal-overlay" id="modalHowYouDoin">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalHowYouDoin')">&times;</button>
+      <div class="letter-body">
+        <h2 style="color: #ff4238;">😏 How You Doin'?</h2>
+        <p>under consideration</p>
+        <p>alias</p>
+        <p><em>kelamaan nulis, ini belom keurus</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal Pivot -->
+  <div class="modal-overlay" id="modalPivot">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalPivot')">&times;</button>
+      <div class="letter-body">
+        <h2 style="color: #ffc000;">🛋️ PIVOT!</h2>
+        <p>under consideration</p>
+        <p>alias</p>
+        <p><em>kelamaan nulis, ini belom keurus</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Modal Lobster -->
+  <div class="modal-overlay" id="modalLobster">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalLobster')">&times;</button>
+      <div class="letter-body">
+        <h2 style="color: #ff4238;">🦞 You're My Lobster</h2>
+        <p>Kamu itu orang yang spesial. Kayak kata Phoebe tentang Ross dan Rachel, lobster itu bakal gandengan capit terus sampai tua.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Modal Call -->
+  <div class="modal-overlay" id="modalCall">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modalCall')">&times;</button>
+      <div class="letter-body">
+        <h2 style="color: #6a5acd;">📞 9 PM Call</h2>
+        <p>Jangan lupa jam 9 malam ini ya! Siapin cemilan dan cerita seru buat diobrolin.</p>
+        <p>See you on the line!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi universal untuk membuka modal
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+    }
+
+    // Fungsi universal untuk menutup modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // Menutup modal jika user mengklik area gelap di luar kotak putih
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        event.target.classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>
