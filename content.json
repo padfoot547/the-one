@@ -86,8 +86,9 @@
         {
           "pageNumber": 2,
           "title": "☕ To the one my heart holds dear,",
-          {"type": "text", "content": "HI SITI NUR AZIZAH FEBRIYANTI, How did your day go today, November 4th?},
-          "items": [],
+          "items": [
+            {"type": "text", "content": "HI SITI NUR AZIZAH FEBRIYANTI, How did your day go today, November 4th?"}
+          ],
           "signature": null
         }
       ]
