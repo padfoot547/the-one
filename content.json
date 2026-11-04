@@ -96,7 +96,11 @@
             {"type": "text", "content": "gue ngerasa 24 jam dalam sehari itu sekarang kurang kalo lagi sama lo."}
             {"type": "text", "content": "DIH GAJE BANGET GUAAA SUMPAH"}
             {"type": "text", "content": "tadi tengah hari bolongnya kaco banget bi, mana ngeliat ada balita yang naik rotom tadi, langsung keinget faraz WQOKWQWK"}
-            {"type": "image", "src": "1.png", "alt": "1"},
+            {
+      "type": "image",
+      "src": "images/1.png",
+      "alt": "1"
+    },
             
           ],
           "signature": null
