@@ -1,7 +1,192 @@
-"signature": {
+{
+  "meta": {
+    "pageTitle": "The One With The Greeting",
+    "mainTitle": "THE ONE WITH YOU",
+    "hintText": "Click the frame to peek"
+  },
+  "mainLetter": {
+    "title": "Hey, Ebi!",
+    "paragraphs": [
+      "Mind if I drop by your virtual apartment for a bit?",
+      "I just wanted to make sure you're having an awesome day. Don't forget to take a break, grab a coffee Central Perk style, and forget about the stressful stuff for a while."
+    ],
+    "signature": {
+      "closing": "I'll be there for you,",
+      "sender": "Satrio"
+    }
+  },
+  "bottomCards": [
+    {
+      "id": "modalPerk",
+      "title": "CENTRAL PERK",
+      "subtitle": "Our virtual hangout spot. I'll be there for you!"
+    },
+    {
+      "id": "modalHowYouDoin",
+      "title": "HOW YOU DOIN'?",
+      "subtitle": "Hope you have a great and relaxed day, just like Joey."
+    },
+    {
+      "id": "modalPivot",
+      "title": "PIVOT!",
+      "subtitle": "If there's ever a problem, we'll just yell \"Pivot!\" together."
+    },
+    {
+      "id": "modalLobster",
+      "title": "THE LOBSTER",
+      "subtitle": "\"It's a known fact that lobsters fall in love and mate for life.\""
+    },
+    {
+      "id": "modalCall",
+      "title": "THE 9 PM CALL",
+      "subtitle": "Reminder: I'll be calling you at 9 PM tonight to catch up!"
+    }
+  ],
+  "modals": {
+    "centralPerk": {
+      "pages": [
+        {
+          "pageNumber": 1,
+          "title": "☕ To the one who made me fall,",
+          "items": [
+            {"type": "text", "content": "(UHUY)"},
+            {"type": "text", "content": "finallehhh kesampean juga saya membuat ala2 blog tandingan Ebi yang maha dahsyat gak tebang aling-aling"},
+            {"type": "text", "content": "jujurrr gue akuinnn, tulisan lo setara Kahlil Gibran zhambouuu"},
+            {"type": "text", "content": "gue suka banget sama cara lo nulis (especially the person behind these words 😭😭😭)"},
+            {"type": "text", "content": "HOW'S YOUR WIKEN GOING, EBI?"},
+            {"type": "text", "content": "kalo dari story yang saya intip sih (kikiki) sepertinya hepi sekaleee tudei 🤍🤍🤍"},
+            {"type": "text", "content": "hm, where do I start? (tiru2 WQOWOQWK)"},
+            {"type": "text", "content": "rekapan kecyil hari Sabtu dulu deh ya wwqokwq hari Sabtu gue gak ngapa2in gilakkk miris bat 🥲"},
+            {"type": "text", "content": "tadinya mau padel tuh jam 8 pagi, diajakin sama om Arif (blio orang baek yang sering ngajakin gue buat bantu jadi score keeper kalo lagi ada turnamen)"},
+            {"type": "text", "content": "tapi kebablasan, bangun2 liat henfon udah jam 9 lewat dikit WQKWQOWKO akhirnya gak jadi olga deh 🥲"},
+            {"type": "text", "content": "tiba2 waktu udah menunjukkan waktu makan siang, karena gue kurang srek sama lauk yang ready kala itu (kayaknya kemaren tuh ikan asin, sama tumis toge kalo gak salah dah)"},
+            {"type": "text", "content": "jadi gue moban ke emak buat dadarin telor aje, dan agak fun fact, emak gue selalu nyetok bumbu kacang enak dibawa dari Purwokerto gitu, jadi ibarat kata ini adalah menu koentji kalo gue lagi gak srek sama lauknya, telor dadar dibalur sama bumbu kacang kane dari PWT wk"},
+            {"type": "text", "content": "eh tapi kemaren lagi pake sambel terasi deng WQKWQOKWOQ soalnya emak gue lagi bikin sambel terasi, bolehlah diadu sama sambel the greatest Mom Yati 🤍"},
+            {"type": "text", "content": "hari pun berjalan lambat, sampai tiba lah ide (muncul jam 20:00 an) \"duh gak bisa nihhh, saya uring2annn tidak ada interaksi sama ebi tolonggg\""},
+            {"type": "text", "content": "\"gue mau nelfonnn, yaudah lah buat aje page balesan seadanya dulu\" eh ternyata saya terlalu kepedean, ternyata si dia gak sekepo saya WQOKWOQKWOQKW"},
+            {"type": "text", "content": "bolak-balik saya refresh page refresh page https://azizahfebriyanti.github.io/greetings/#letter ternyata gak ada update an. singkat cerita, \"coba telfon kali ye, barangkali masih bisa ye kan\""},
+            {"type": "text", "content": "sekali telfon, gak diangkat. \"mengikuti filosofi 3 kali penolakan si dia, coba sampe 3 kali yee mungkin berlaku juga di telfon ini\" WQKWOQKW"},
+            {"type": "text", "content": "EH ALHAMDULILLAH DIANGKAT UYEEE~~~ seketika hariku yang pontennya dari 5/100 langsung melejit ke 13173021730103121030120/100 🚀🚀🚀😋"},
+            {"type": "text", "content": "long story short, i fell for you. eh maap auto corect. oke lanjut, gue kebangun jam 8, dan dibanguninnya sama kinfar wqkwoq sebelumnya gue ada janjian sama novi di Captain galaxy jam 10, soalnya rambut faraz udah lumayan gondrong"},
+            {"type": "text", "content": "eh ternyata Akungnya udah kangen kali, jadilah die yang jemput kinfar pagi2"},
+            {"type": "text", "content": "tibalah sore hari, akhirnya faraz diajak buat cukur rambut. akhirnya faraz cukur di 'pangkas rambut Bandung' namanya, yang tau itu tempat akungnya, jadi gue pergi bertiga tadi"},
+            {"type": "text", "content": "alhamdulillah jadi motong cost banget, yang tadinya mau di Captain harga 70 ribu, eh di pangkas rambut Sunda cuman 20 ribu aje WQOKWOQWKOQ"},
+            {"type": "image", "src": "Screenshot_14.png", "alt": "Screenshot 14"},
+            {"type": "text", "content": "ayo donggg gak usah kuat aja 😌😌😌 kan AN EVERYDAY CONVERSATION"},
+            {"type": "image", "src": "Screenshot_15.png", "alt": "Screenshot 15"},
+            {"type": "text", "content": "bukan karena itu kokkk"},
+            {"type": "text", "content": "I miss you too, Ebi. more than I probably let you know."},
+            {"type": "text", "content": "Have a good night tooo. janlup jangan tinggalin qabliyah subuh 🤍"}
+          ],
+          "signature": {
+            "closing": "Manusia paling menyebalkan,",
+            "sender": "Satrio"
+          }
+        },
+        {
+          "pageNumber": 2,
+          "title": "☕ To the one my heart holds dear,",
+          "items": [
+            {"type": "text", "content": "Assalamualaikum SITI NUR AZIZAH FEBRIYANTI, How did your day go today, November 4th?"},
+            {"type": "text", "content": "I hope you always find reasons to smile, just as I always do whenever I'm around you. jiaaaKkKhhH"},
+            {"type": "text", "content": "podcast ini akan dibuka dengan permohonan maaf terbuka (minta maaf karena selalu minta maaf). maaf ya, bi, gue gak ada di saat Ebi butuh, gue keturuan"},
+            {"type": "text", "content": "dari semalem zuzur gue mulai merasakan kekalutan. somehow, I can always tell when something feels off with you, even when it's just a little different from usual (gayaan lu sat, padahal ini bantuan deepL)"},
+            {"type": "text", "content": "terima kasi Ebi untuk effort nya, yaitu bersedia dengan sukarela jalan lagi ke Alfa untuk kedua kalinya di hari itu 🤍 1 pria bahagia, 19 juta pria menunggu lapangan pekerjaan kata warganet"},
+            {"type": "text", "content": "setelah pertemuan yang sangat gc itu huhu... bentar, gue mau ngedangdut dulu"},
+            {"type": "text", "content": "gue ngerasa 24 jam dalam sehari itu sekarang kurang kalo lagi sama lo."},
+            {"type": "text", "content": "DIH GAJE BANGET GUAAA SUMPAH"},
+            {"type": "text", "content": "tadi tengah hari bolongnya kaco banget bi, mana ngeliat ada balita yang naik rotom tadi, langsung keinget faraz WQOKWQWK"},
+            {
+              "type": "image",
+              "src": "images/1.png",
+              "alt": "1"
+            },
+            {"type": "text", "content": "jadi tadi kan Hening tiba2 gak ada angin, gak ada ujan, beliin kopken. gue sama fikri kebagian juga"},
+            {
+              "type": "image",
+              "src": "images/2.png",
+              "alt": "2"
+            },
+            {"type": "text", "content": "kek biasa ye kan, asbun nanya aja dulu yang penting berkontribusi. seperti biasa Alkie langsung ngegas wqwkqow apakah itu love language blio?"},
+            {
+              "type": "image",
+              "src": "images/3.png",
+              "alt": "3"
+            },
+            {"type": "text", "content": "pas gue sampe Sopo, gue kan berinisiatif pengen ambil kopinya ya. gue bilang lah sama blio. dengan jawaban yang gue lingkari, mestinya kita sepemahaman dong, bi?"},
+            {"type": "text", "content": "settt sampe nih di kulkas 32, eh kupinye udah gak ade, ternyata udah die bawa WQKWOQWK"},
+            {"type": "text", "content": "GAPAPE KOK GAPAPE, biar minimal 5 ribu step"},
+            {
+              "type": "image",
+              "src": "images/4.png",
+              "alt": "4"
+            },
+            {"type": "text", "content": "tadi pas lagi solat, eh liat sendal mirip punyanya CRYSTAL REED. kalo idup gue ada soundtrack nya, kemungkinan langsung play lagu 'Wish You Were Here - Endah N Rhesa' tsahhh ilahhh"},
+            {"type": "text", "content": "kenapa ya idup ini gak langsung play lagu kek film2?"},
+            {
+              "type": "image",
+              "src": "images/sena1.png",
+              "alt": "sena1"
+            },
+            {
+              "type": "image",
+              "src": "images/sena2.png",
+              "alt": "sena2"
+            },
+            {
+              "type": "image",
+              "src": "images/sena3.png",
+              "alt": "sena3"
+            },
+            {
+              "type": "image",
+              "src": "images/sena4.png",
+              "alt": "sena4"
+            },
+            {
+              "type": "image",
+              "src": "images/sena5.png",
+              "alt": "sena5"
+            },
+            {"type": "text", "content": "kalo ini kumpulan foto2 yang diabadikan saat saya ala2 mau kasih surpris. walaupun gak ada artsy2 nya dan bloon parah kenapa gak perdayakan longor ini untuk memanggil Ebi, even so, this will always be a memory that I'll hold dear 🤍"},
+            {"type": "text", "content": "baru cerita kedua udah ngalor ngidul gini WQOKOQKWOQW"},
+            {"type": "text", "content": "Rest well, and may tomorrow be kind to you, Ebi 🤍"}
+          ],
+          "signature": {
             "closing": "Always grateful,",
             "sender": "Satrio"
           }
-        <-- DI SINI KURANG TANDA KURUNG KURAWAL PENUTUP '}' UNTUK HALAMAN 2
+        }
       ]
     },
+    "howYouDoin": {
+      "title": "😏 How You Doin'?",
+      "paragraphs": [
+        "under consideration",
+        "alias",
+        "kelamaan nulis, ini belom keurus"
+      ]
+    },
+    "pivot": {
+      "title": "🛋️ PIVOT!",
+      "paragraphs": [
+        "under consideration",
+        "alias",
+        "kelamaan nulis, ini belom keurus"
+      ]
+    },
+    "lobster": {
+      "title": "🦞 You're My Lobster",
+      "paragraphs": [
+        "Kamu itu orang yang spesial. Kayak kata Phoebe tentang Ross dan Rachel, lobster itu bakal gandengan capit terus sampai tua."
+      ]
+    },
+    "call": {
+      "title": "📞 9 PM Call",
+      "paragraphs": [
+        "Jangan lupa jam 9 malam ini ya! Siapin cemilan dan cerita seru buat diobrolin.",
+        "See you on the line!"
+      ]
+    }
+  }
+}
