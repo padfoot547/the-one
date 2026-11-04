@@ -160,7 +160,7 @@
     .modal-content {
       background: #fdfaf2;
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       padding: 40px;
       border-radius: 10px;
       position: relative;
@@ -184,6 +184,7 @@
       color: #888;
       cursor: pointer;
       transition: color 0.2s;
+      z-index: 10;
     }
 
     .close-btn:hover {
@@ -191,14 +192,13 @@
     }
 
     .letter-body {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.6;
-      max-height: 65vh; /* Membatasi tinggi teks maksimal 65% dari tinggi layar */
-      overflow-y: auto; /* Memunculkan scroll otomatis jika teks lebih panjang dari batas */
-      padding-right: 15px; /* Memberi jarak agar teks tidak menabrak scrollbar di kanan */
+      max-height: 60vh;
+      overflow-y: auto;
+      padding-right: 12px;
     }
 
-    /* Mengubah desain scrollbar khusus untuk isi surat */
     .letter-body::-webkit-scrollbar {
       width: 6px;
     }
@@ -206,29 +206,65 @@
       background: transparent; 
     }
     .letter-body::-webkit-scrollbar-thumb {
-      background: #d1c4e9; /* Warna ungu pastel yang senada dengan tema */
+      background: #d1c4e9;
       border-radius: 10px;
     }
     .letter-body::-webkit-scrollbar-thumb:hover {
-      background: #6a5acd; /* Warna ungu gelap saat scrollbar disorot */
+      background: #6a5acd;
     }
 
     .letter-body h2 {
       font-family: 'Caveat', cursive;
-      font-size: 32px;
+      font-size: 30px;
       color: #6a5acd;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       text-align: center;
     }
 
     .letter-body p {
-      margin-bottom: 15px;
+      margin-bottom: 14px;
+    }
+
+    /* Pagination Nav Buttons di Bawah Modal */
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed #dcd3c4;
+    }
+
+    .page-btn {
+      background: #ffbc00;
+      border: none;
+      color: #222;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .page-btn:hover {
+      background: #ff4238;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .page-indicator {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <h1 class="friends-title">
+  <h1 class="friends-title" id="mainPageTitle">
     T<span class="dot red"></span>H<span class="dot blue"></span>E
     O<span class="dot yellow"></span>N<span class="dot red"></span>E
     W<span class="dot blue"></span>I<span class="dot yellow"></span>T<span class="dot red"></span>H
@@ -241,11 +277,11 @@
     <div class="yellow-frame">
       <div class="peephole"></div>
     </div>
-    <div class="hint-text">Click the frame to peek</div>
+    <div class="hint-text" id="frameHintText">Click the frame to peek</div>
   </div>
 
-  <!-- 5 Kartu Bawah (ditambahkan onclick) -->
-  <div class="cards-wrapper">
+  <!-- 5 Kartu Bawah -->
+  <div class="cards-wrapper" id="cardsWrapper">
     <div class="card" onclick="openModal('modalPerk')">
       <div class="card-title">CENTRAL PERK</div>
       <div class="card-text">Our virtual hangout spot. I'll be there for you!</div>
@@ -285,48 +321,37 @@
     </div>
   </div>
 
-  <!-- 2. Modal Central Perk -->
+  <!-- 2. Modal Central Perk (Dengan Sistem Halaman 1 & 2) -->
   <div class="modal-overlay" id="modalPerk">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal('modalPerk')">&times;</button>
-      <div class="letter-body">
-        <h2 style="color: #00a0d6;">☕ To the one who made me fall,</h2>
-        <p>(UHUY)</p>
-        <p>finallehhh kesampean juga saya membuat ala2 blog tandingan Ebi yang maha dahsyat gak tebang aling-aling</p>
-        <p>jujurrr gue akuinnn, tulisan lo setara Kahlil Gibran zhambouuu</p>
-        <p>gue suka banget sama cara lo nulis (especially the person behind these words 😭😭😭)</p>
-        <p>HOW'S YOUR WIKEN GOING, EBI?</p>
-        <P>kalo dari story yang saya intip sih (kikiki) sepertinya hepi sekaleee tudei 🤍🤍🤍</P>
-        <p>hm, where do I start? (tiru2 WQOWOQWK)</p>
-        <p>rekapan kecyil hari Sabtu dulu deh ya wwqokwq hari Sabtu gue gak ngapa2in gilakkk miris bat 🥲</p>
-        <p>tadinya mau padel tuh jam 8 pagi, diajakin sama om Arif (blio orang baek yang sering ngajakin gue buat bantu jadi score keeper kalo lagi ada turnamen)</p>
-        <p>tapi kebablasan, bangun2 liat henfon udah jam 9 lewat dikit WQKWQOWKO akhirnya gak jadi olga deh 🥲</p>
-        <p>tiba2 waktu udah menunjukkan waktu makan siang, karena gue kurang srek sama lauk yang ready kala itu (kayaknya kemaren tuh ikan asin, sama tumis toge kalo gak salah dah)</p>
-        <p>jadi gue moban ke emak buat dadarin telor aje, dan agak fun fact, emak gue selalu nyetok bumbu kacang enak dibawa dari Purwokerto gitu, jadi ibarat kata ini adalah menu koentji kalo gue lagi gak srek sama lauknya, telor dadar dibalur sama bumbu kacang kane dari PWT wk</p>
-        <p>eh tapi kemaren lagi pake sambel terasi deng WQKWQOKWOQ soalnya emak gue lagi bikin sambel terasi, bolehlah diadu sama sambel the greatest Mom Yati 🤍</p>
-        <p>hari pun berjalan lambat, sampai tiba lah ide (muncul jam 20:00 an) "duh gak bisa nihhh, saya uring2annn tidak ada interaksi sama ebi tolonggg"</p>
-        <p>"gue mau nelfonnn, yaudah lah buat aje page balesan seadanya dulu" eh ternyata saya terlalu kepedean, ternyata si dia gak sekepo saya WQOKWOQKWOQKW</p>
-        <p>bolak-balik saya refresh page refresh page https://azizahfebriyanti.github.io/greetings/#letter ternyata gak ada update an. singkat cerita, "coba telfon kali ye, barangkali masih bisa ye kan"</p>
-        <p>sekali telfon, gak diangkat. "mengikuti filosofi 3 kali penolakan si dia, coba sampe 3 kali yee mungkin berlaku juga di telfon ini" WQKWOQKW</p>
-        <p>EH ALHAMDULILLAH DIANGKAT UYEEE~~~ seketika hariku yang pontennya dari 5/100 langsung melejit ke 13173021730103121030120/100 🚀🚀🚀😋</p>
-        <p>long story short, i fell for you. eh maap auto corect. oke lanjut, gue kebangun jam 8, dan dibanguninnya sama kinfar wqkwoq sebelumnya gue ada janjian sama novi di Captain galaxy jam 10, soalnya rambut faraz udah lumayan gondrong</p>
-        <p>eh ternyata Akungnya udah kangen kali, jadilah die yang jemput kinfar pagi2</p>
-        <p>tibalah sore hari, akhirnya faraz diajak buat cukur rambut. akhirnya faraz cukur di 'pangkas rambut Bandung' namanya, yang tau itu tempat akungnya, jadi gue pergi bertiga tadi</p>
-        <p>alhamdulillah jadi motong cost banget, yang tadinya mau di Captain harga 70 ribu, eh di pangkas rambut Sunda cuman 20 ribu aje WQOKWOQWKOQ</p>
-        <div style="text-align: center; margin: 20px 0;">
-  <img src="Screenshot_14.png" alt="Screenshot" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-</div>
-        <p>ayo donggg gak usah kuat aja 😌😌😌 kan AN EVERYDAY CONVERSATION</p>
-        <div style="text-align: center; margin: 20px 0;">
-  <img src="Screenshot_15.png" alt="Screenshot" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-</div>
-<p>bukan karena itu kokkk</p>
-        <p>I miss you too, Ebi. more than I probably let you know.</p>
-        <p>Have a good night tooo. janlup jangan tinggalin qabliyah subuh 🤍</p>
-        <p>Manusia paling menyebalkan,</p>
-        <p>Satrio</p>
 
+      <!-- Halaman 1 -->
+      <div class="perk-page" id="perkPage1">
+        <div class="letter-body">
+          <h2 style="color: #00a0d6;">☕ To the one who made me fall,</h2>
+          <!-- Konten diisi otomatis lewat fetch content.json -->
+        </div>
+        <div class="page-nav">
+          <span></span>
+          <span class="page-indicator">Page 1 of 2</span>
+          <button class="page-btn" onclick="changePerkPage(2)">Next ❯</button>
+        </div>
       </div>
+
+      <!-- Halaman 2 -->
+      <div class="perk-page" id="perkPage2" style="display: none;">
+        <div class="letter-body">
+          <h2 style="color: #00a0d6;">☕ Part II</h2>
+          <!-- Konten diisi otomatis lewat fetch content.json -->
+        </div>
+        <div class="page-nav">
+          <button class="page-btn" onclick="changePerkPage(1)">❮ Prev</button>
+          <span class="page-indicator">Page 2 of 2</span>
+          <span></span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -380,22 +405,140 @@
   </div>
 
   <script>
-    // Fungsi universal untuk membuka modal
+    // Membaca seluruh data dari file content.json secara dinamis
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        // 1. Meta / Hint Text
+        if (data.meta && data.meta.hintText) {
+          const hint = document.getElementById('frameHintText');
+          if (hint) hint.innerText = data.meta.hintText;
+        }
+
+        // 2. Render Kartu Bawah (Cards)
+        if (data.bottomCards && data.bottomCards.length > 0) {
+          const cardsContainer = document.getElementById('cardsWrapper');
+          if (cardsContainer) {
+            cardsContainer.innerHTML = data.bottomCards.map(card => `
+              <div class="card" onclick="openModal('${card.id}')">
+                <div class="card-title">${card.title}</div>
+                <div class="card-text">${card.subtitle}</div>
+              </div>
+            `).join('');
+          }
+        }
+
+        // 3. Render Modal Surat Utama (Yellow Frame)
+        if (data.mainLetter) {
+          const mainModal = document.querySelector('#modalMainLetter .letter-body');
+          if (mainModal) {
+            const paragraphs = data.mainLetter.paragraphs.map(p => `<p>${p}</p>`).join('');
+            const sig = data.mainLetter.signature ? `
+              <p style="font-family: 'Caveat', cursive; font-size: 26px; text-align: right; margin-top: 30px;">
+                ${data.mainLetter.signature.closing}<br>${data.mainLetter.signature.sender}
+              </p>` : '';
+            mainModal.innerHTML = `<h2>${data.mainLetter.title}</h2>${paragraphs}${sig}`;
+          }
+        }
+
+        // Helper render isi item (teks atau gambar) untuk Central Perk
+        function renderItems(items) {
+          if (!items) return '';
+          return items.map(item => {
+            if (item.type === 'text') {
+              return `<p>${item.content}</p>`;
+            } else if (item.type === 'image') {
+              return `
+                <div style="text-align: center; margin: 20px 0;">
+                  <img src="${item.src}" alt="${item.alt || 'Image'}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>`;
+            }
+            return '';
+          }).join('');
+        }
+
+        // 4. Render Central Perk (Page 1 & 2)
+        if (data.modals && data.modals.centralPerk && data.modals.centralPerk.pages) {
+          const pages = data.modals.centralPerk.pages;
+          
+          // Page 1
+          if (pages[0]) {
+            const p1Body = document.querySelector('#perkPage1 .letter-body');
+            if (p1Body) {
+              const sig1 = pages[0].signature ? `
+                <br><p style="font-family: 'Caveat', cursive; font-size: 24px; text-align: right;">
+                  ${pages[0].signature.closing}<br>${pages[0].signature.sender}
+                </p>` : '';
+              p1Body.innerHTML = `<h2 style="color: #00a0d6;">${pages[0].title}</h2>` + renderItems(pages[0].items) + sig1;
+            }
+          }
+
+          // Page 2
+          if (pages[1]) {
+            const p2Body = document.querySelector('#perkPage2 .letter-body');
+            if (p2Body) {
+              const sig2 = pages[1].signature ? `
+                <br><p style="font-family: 'Caveat', cursive; font-size: 24px; text-align: right;">
+                  ${pages[1].signature.closing}<br>${pages[1].signature.sender}
+                </p>` : '';
+              p2Body.innerHTML = `<h2 style="color: #00a0d6;">${pages[1].title}</h2>` + renderItems(pages[1].items) + sig2;
+            }
+          }
+        }
+
+        // 5. Render Modal Standar Lainnya
+        const modalMap = {
+          '#modalHowYouDoin': data.modals.howYouDoin,
+          '#modalPivot': data.modals.pivot,
+          '#modalLobster': data.modals.lobster,
+          '#modalCall': data.modals.call
+        };
+
+        for (const [selector, mod] of Object.entries(modalMap)) {
+          if (mod) {
+            const body = document.querySelector(`${selector} .letter-body`);
+            if (body) {
+              const pTags = mod.paragraphs.map(p => `<p>${p}</p>`).join('');
+              body.innerHTML = `<h2>${mod.title}</h2>${pTags}`;
+            }
+          }
+        }
+      })
+      .catch(err => {
+        console.log("Catatan: Jalankan web melalui local server / GitHub Pages agar fetch('content.json') dapat terbaca otomatis:", err);
+      });
+
+    // Buka Tutup Modal
     function openModal(modalId) {
       document.getElementById(modalId).classList.add('active');
+      if (modalId === 'modalPerk') {
+        changePerkPage(1);
+      }
     }
 
-    // Fungsi universal untuk menutup modal
     function closeModal(modalId) {
       document.getElementById(modalId).classList.remove('active');
     }
 
-    // Menutup modal jika user mengklik area gelap di luar kotak putih
+    function changePerkPage(pageNum) {
+      const page1 = document.getElementById('perkPage1');
+      const page2 = document.getElementById('perkPage2');
+      if (pageNum === 1) {
+        page1.style.display = 'block';
+        page2.style.display = 'none';
+        page1.querySelector('.letter-body').scrollTop = 0;
+      } else {
+        page1.style.display = 'none';
+        page2.style.display = 'block';
+        page2.querySelector('.letter-body').scrollTop = 0;
+      }
+    }
+
     window.onclick = function(event) {
       if (event.target.classList.contains('modal-overlay')) {
         event.target.classList.remove('active');
       }
-    }
+    };
   </script>
 </body>
 </html>
